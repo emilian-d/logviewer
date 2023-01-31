@@ -9,6 +9,7 @@
     Width="1250"
     Title="{Binding Path=WindowTitle, Mode=OneWay}"
     WindowStartupLocation="CenterScreen"
+    WindowState="Maximized"
     AllowDrop="True">
 
     <Window.Resources>
@@ -973,7 +974,7 @@
                             Width="Auto">
                         </ColumnDefinition>
                         <ColumnDefinition
-                            Width="2.5*">
+                            Width="*">
                         </ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
@@ -1009,7 +1010,7 @@
                     </GridSplitter>
 
                     <DockPanel
-                        Grid.Column="2"
+                        Grid.Column="2" 
                         LastChildFill="True">
                         <TextBlock
                             DockPanel.Dock="Top"

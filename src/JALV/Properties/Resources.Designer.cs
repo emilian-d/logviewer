@@ -91,7 +91,7 @@ namespace JALV.Properties {
         ///
         ///Log4Net config file must be setup with XmlLayoutSchemaLog4j layout; just need a few lines in your application config file to configure it to use this format (see examples on right).
         ///
-        ///It is a WPF Application based on .NET Framework 4.0 and written with C#  [rest of string was truncated]&quot;;.
+        ///It is a WPF Application based on .NET Framework 4.0 and writ [rest of string was truncated]&quot;;.
         /// </summary>
         public static string About_Description {
             get {
@@ -802,7 +802,7 @@ namespace JALV.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Throwable:.
+        ///   Looks up a localized string similar to Exception:.
         /// </summary>
         public static string MainWindow_DetailsBox_Throwable_Text {
             get {
