@@ -40,6 +40,15 @@ namespace JALV.Core.Providers
                     timestamp = new DateTime();
                 }
 
+                var description = "";
+                if (lineObject.ContainsKey("Message.Description"))
+                {
+                    description += lineObject["Message.Description"].Value<string>();
+                }
+                if (lineObject.ContainsKey("Exception"))
+                {
+                    description += $"\r\n{lineObject["Exception"].Value<string>()}";
+                }
                 LogItem entry = new LogItem()
                 {
                     File = dataSource,
@@ -52,7 +61,7 @@ namespace JALV.Core.Providers
                     Thread = lineObject.SelectToken("thread")?.Value<String>() ?? "",
                     UserName = lineObject.SelectToken("user")?.Value<String>() ?? "",
                     HostName = "",//lineObject.ContainsKey("Message.Description") ? lineObject["Message.Description"].Value<string>() : "",
-                    Throwable = lineObject.ContainsKey("Message.Description") ? lineObject["Message.Description"].Value<string>() : "",
+                    Throwable = description,
                     Class = lineObject.SelectToken("class")?.Value<String>() ?? "",
                     Method = lineObject.SelectToken("method")?.Value<String>() ?? "",
                     Id = entryId,

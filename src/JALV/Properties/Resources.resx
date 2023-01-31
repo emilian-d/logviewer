@@ -334,7 +334,7 @@
     <value>Message:</value>
   </data>
   <data name="MainWindow_DetailsBox_Throwable_Text" xml:space="preserve">
-    <value>Throwable:</value>
+    <value>Exception:</value>
   </data>
   <data name="MainWindow_AutoRefresh_Checkbox_Text" xml:space="preserve">
     <value>Auto Refresh</value>
