@@ -33,7 +33,7 @@ namespace JALV.Core
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Trace.TraceError("Error saving Favorites list [{0}]:\r\n{1}\r\n{2}",path,ex.Message,ex.StackTrace);
+                System.Diagnostics.Trace.TraceError("Error saving Favorites list [{0}]:\r\n{1}\r\n{2}", path, ex.Message, ex.StackTrace);
                 throw;
             }
             finally
@@ -43,7 +43,7 @@ namespace JALV.Core
                 if (fileStream != null)
                     fileStream.Close();
             }
-           
+
         }
 
         public static IList<PathItem> ParseFolderFile(string path)
@@ -94,25 +94,24 @@ namespace JALV.Core
 
         public static IList<LogItem> ParseLogFile(string path)
         {
-            IEnumerable<LogItem> result = null;
             try
             {
                 AbstractEntriesProvider provider;
 
-                if (Path.GetExtension(path) == ".json")
+                switch (Path.GetExtension(path))
                 {
-                    provider = EntriesProviderFactory.GetProvider(EntriesProviderType.Json);
-                }
-                if (Path.GetExtension(path) == ".log")
-                {
-                    provider = EntriesProviderFactory.GetProvider(EntriesProviderType.Log);
-                }
-                else
-                {
-                    provider = EntriesProviderFactory.GetProvider();
+                    case ".json":
+                        provider = EntriesProviderFactory.GetProvider(EntriesProviderType.Json);
+                        break;
+                    case ".xml":
+                        provider = EntriesProviderFactory.GetProvider();
+                        break;
+                    default:
+                        provider = EntriesProviderFactory.GetProvider(EntriesProviderType.Log);
+                        break;
                 }
 
-                result = provider.GetEntries(path);
+                var result = provider.GetEntries(path);
                 return result.ToList();
             }
             catch (Exception ex)
